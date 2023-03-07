@@ -1,1 +1,5 @@
-<h1>ciao</h1>
+@extends('layouts.app')
+
+@section('content')
+<h1>palle</h1>
+@endsection
