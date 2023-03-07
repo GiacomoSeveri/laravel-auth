@@ -3,6 +3,7 @@
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [GuestHomeController::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('/admin')->group(function () {
+    // home loggato
     Route::get('/', [AdminHomeController::class, 'index'])->name('home');
+
+    // tutte le rotte
+    Route::resource('projects', ProjectController::class);
 });
 
 Route::middleware('auth')->name('profile.')->prefix('/profile')->group(function () {
