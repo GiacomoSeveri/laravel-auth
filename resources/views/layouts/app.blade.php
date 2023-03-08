@@ -24,8 +24,10 @@
     @include('includes.navbar')
 
     <div id="app">
-        <main class="container">
-            @yield('content')
+        <main class="black-hole">
+            <div class="container">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
