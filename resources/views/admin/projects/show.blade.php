@@ -3,14 +3,14 @@
 @section('title', 'eccoci')
 
 @section('content')
-<section id="project">
+<section id="scheda">
     <div class="container">
         <div class="row">
             <div class="col-12 my-3 text-center">
                 <div class="d-flex justify-content-between align-items-center my-3">
                     <h1 class="m-0">{{ $project->title }}</h1>
                     <div class="d-flex justify-content-between">
-                        <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-small btn-primary-custom text-light me-1">Modifica</a>
+                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-small btn-primary-custom text-light me-1">Modifica</a>
                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="me-1">
                             @csrf
                             @method('DELETE')
