@@ -12,6 +12,7 @@
 
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     @yield('cdn')
@@ -21,13 +22,14 @@
 </head>
 
 <body>
-    @include('includes.navbar')
+    <header>
+        @include('includes.navbar')
+    </header>
+        
 
     <div id="app">
-        <main class="black-hole">
-            <div class="container">
-                @yield('content')
-            </div>
+        <main class="container">
+            @yield('content')
         </main>
     </div>
 </body>
