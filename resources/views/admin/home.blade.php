@@ -24,7 +24,7 @@
 </div>
 
 <div class="row mt mb-5">
-    <div class="col-12 me-5 p-3 card">
+    <div class="col-12 mb-4 p-3 card">
         <h1>Tabella dei contenuti</h1>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur eum architecto consequuntur eius aspernatur illum, rem error quaerat corrupti, autem corporis ad libero. Dolor enim voluptatibus repellendus cumque aspernatur odit!
         Esse repellendus reprehenderit impedit enim, ab ea quasi expedita quibusdam deserunt consequatur obcaecati sapiente quisquam nemo quam debitis iste omnis velit! Est sed nulla adipisci non dolore nam neque maxime?
