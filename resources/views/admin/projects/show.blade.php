@@ -24,7 +24,11 @@
                         {{ $project->content }}
                     </p>
                 </div>
-                <img src="{{ asset('storage/' . $project->image) }}" class="w-100 img-fluid">
+                @if($project->image)
+                <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->slug }}" class="w-100 img-fluid">
+                @else
+                <h1>nessuna immagine di riferimento</h1>
+                @endif
                 <div class="text-start my-4">
                     <ul>
                         <h6>Collaboratori</h6>

@@ -42,6 +42,7 @@ class ProjectController extends Controller
         $project = new Project();
 
         if (Arr::exists($data, 'image')) {
+            if ($project->image) Storage::delete($project->image);
             $img_url = Storage::put('project', $data['image']);
             $data['image'] = $img_url;
         }
@@ -77,6 +78,12 @@ class ProjectController extends Controller
 
         $data['slug'] = Str::slug($data['title'], '-');
 
+        if (Arr::exists($data, 'image')) {
+            if ($project->image) Storage::delete($project->image);
+            $img_url = Storage::put('project', $data['image']);
+            $data['image'] = $img_url;
+        }
+
         $project->update($data);
 
         return to_route('admin.projects.show', compact('project'));
@@ -88,6 +95,9 @@ class ProjectController extends Controller
     public function destroy(string $id)
     {
         $projects = Project::findOrFail($id);
+
+        if ($projects->image) Storage::delete($projects->image);
+
         $projects->delete();
 
         return to_route('admin.projects.index');
