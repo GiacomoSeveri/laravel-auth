@@ -43,8 +43,7 @@ class ProjectController extends Controller
 
         if (Arr::exists($data, 'image')) {
             $img_url = Storage::put('project', $data['image']);
-            $date['image'] = $img_url;
-            dd($img_url);
+            $data['image'] = $img_url;
         }
 
         $project->fill($data);
