@@ -11,7 +11,7 @@
             <div class="row">
             <div class="mb-3 col-6">
                 <label for="title" class="form-label">Titolo</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{old('title', $project->title)}}">
+                <input type="text" class="form-control" id="title" name="title" required value="{{old('title', $project->title)}}">
             </div>
             <div class="mb-3 col-6">
                 <label for="image" class="form-label">Immagine</label>
@@ -19,7 +19,7 @@
             </div>
             <div class="mb-3 col-12">
                 <label for="content" class="form-label">Paragrafo</label>
-                <textarea class="form-control" id="content" name="content" rows="6">{{old('content', $project->content)}}</textarea>
+                <textarea class="form-control" id="content" name="content" rows="6" required>{{old('content', $project->content)}}</textarea>
             </div>
             <div class="mb-3 col-4">
                 <label for="collab" class="form-label">Collaborazioni</label>
