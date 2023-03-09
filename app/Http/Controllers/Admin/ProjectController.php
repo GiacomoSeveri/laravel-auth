@@ -6,6 +6,8 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -38,6 +40,12 @@ class ProjectController extends Controller
         $data['slug'] = Str::slug($data['title'], '-');
 
         $project = new Project();
+
+        if (Arr::exists($data, 'image')) {
+            $img_url = Storage::put('project', $data['image']);
+            $date['image'] = $img_url;
+        }
+
         $project->fill($data);
         $project->save();
 

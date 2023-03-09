@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'modifica')
+@section('title', 'crea')
 
 @section('content')
 <section id="edit">
     <div class="container">
-        <form method="POST" action="{{ route('admin.projects.store', $project->id) }}">
+        <form method="POST" action="{{ route('admin.projects.store', $project->id) }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
             <div class="mb-3 col-6">
@@ -13,8 +13,12 @@
                 <input type="text" class="form-control" id="title" name="title" required value="{{old('title', $project->title)}}">
             </div>
             <div class="mb-3 col-6">
+                <label for="slug" class="form-label">Titolo</label>
+                <input type="text" class="form-control" id="slug" disabled value="{{old('title', $project->title)}}">
+            </div>
+            <div class="mb-3 col-12">
                 <label for="image" class="form-label">Immagine</label>
-                <input type="url" class="form-control" id="image" name="image" value="{{old('image', $project->image)}}">
+                <input type="file" class="form-control" id="image" name="image">
             </div>
             <div class="mb-3 col-12">
                 <label for="content" class="form-label">Paragrafo</label>
@@ -26,10 +30,22 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-small btn-primary-custom text-light me-1">Vai</button>
-            <a href="{{route('admin.projects.index')}}" class="btn btn-small btn-primary-custom text-light">Indietro</a>
+            <button type="submit" class="btn btn-sm btn-primary-custom text-light me-1">Vai</button>
+            <a href="{{route('admin.projects.index')}}" class="btn btn-sm btn-primary-custom text-light">Indietro</a>
         </div>
     </form>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+<script>
+    //prendo gli elemneti 
+    const slugInput = document.getElementById('slug');
+    const titleInput = document.getElementById('title');
+
+    titleInput.addEventListener('blur', () => {
+        slugInput.value = titleInput.value.toLowerCase().split(' ').join('-');
+    });
+</script>
 @endsection

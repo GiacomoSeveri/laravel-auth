@@ -10,13 +10,13 @@
                 <div class="d-flex justify-content-between align-items-center my-3">
                     <h1 class="m-0">{{ $project->title }}</h1>
                     <div class="d-flex justify-content-between">
-                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-small btn-primary-custom text-light me-1">Modifica</a>
+                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-sm btn-primary-custom text-light me-1">Modifica</a>
                         <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="me-1">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-small btn-primary-custom text-light">Elimina</button>
+                            <button type="submit" class="btn btn-sm btn-primary-custom text-light">Elimina</button>
                         </form>
-                        <a href="{{route('admin.projects.index')}}" class="btn btn-small btn-primary-custom text-light">Indietro</a>
+                        <a href="{{route('admin.projects.index')}}" class="btn btn-sm btn-primary-custom text-light">Indietro</a>
                     </div>
                 </div>
                 <div>
@@ -24,7 +24,7 @@
                         {{ $project->content }}
                     </p>
                 </div>
-                <img src="{{ $project->image }}" class="w-100 img-fluid">
+                <img src="{{ asset('storage/' . $project->image) }}" class="w-100 img-fluid">
                 <div class="text-start my-4">
                     <ul>
                         <h6>Collaboratori</h6>
