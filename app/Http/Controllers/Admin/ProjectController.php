@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -23,7 +24,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $project = new Project();
+        return view('admin.projects.create', compact('project'));
     }
 
     /**
@@ -31,7 +33,15 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($data['title'], '-');
+
+        $project = new Project();
+        $project->fill($data);
+        $project->save();
+
+        return  to_route('admin.projects.show', compact('project'));
     }
 
     /**
@@ -45,22 +55,23 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        $projects = Project::findOrFail($id);
-        return view('admin.projects.show', compact('projects'));
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
         $data = $request->all();
 
-        $project = Project::findOrFail($id);
-        $project->fill($data);
-        $project->save();
+        $data['slug'] = Str::slug($data['title'], '-');
+
+        $project->update($data);
+
+        return to_route('admin.projects.show', compact('project'));
     }
 
     /**

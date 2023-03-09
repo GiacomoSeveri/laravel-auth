@@ -17,7 +17,7 @@
             @endforeach
         </div>
         <div class="d-flex justify-content-center my-4">
-            <a href="" class="btn btn-small btn-primary-custom text-light">Aggiungi</a>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-small btn-primary-custom text-light">Aggiungi</a>
         </div>
     </div>
 </section>
